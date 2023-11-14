@@ -10,10 +10,14 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
+            Image(systemName: "exclamationmark.warninglight")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
+                .foregroundColor(.black)
             Text("Testing!")
+                .font(.title)
+                .foregroundColor(Color.purple)
+                .bold()
         }
         .padding()
     }
