@@ -53,8 +53,7 @@
 				4241A6202B04F01D003CE337 /* UpdatesModelView.swift */,
 				4241A6222B04F042003CE337 /* CallsModelView.swift */,
 				4241A6242B04F06B003CE337 /* CommunitiesModelView.swift */,
-				4241A6282B04F8ED003CE337 /* ChatListView.swift */,
-				42DAE1C72B075AF300C9DDAD /* ChatDetailView.swift */,
+				42E619FA2B0CB2900082795A /* ChatModel */,
 				4241A6262B04F098003CE337 /* SettingsModelView.swift */,
 				42DAE1C42B061CB000C9DDAD /* Model */,
 				4241A6062B03905D003CE337 /* Products */,
@@ -94,6 +93,15 @@
 				42DAE1C52B063E2300C9DDAD /* LIstOfChats.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		42E619FA2B0CB2900082795A /* ChatModel */ = {
+			isa = PBXGroup;
+			children = (
+				4241A6282B04F8ED003CE337 /* ChatListView.swift */,
+				42DAE1C72B075AF300C9DDAD /* ChatDetailView.swift */,
+			);
+			name = ChatModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

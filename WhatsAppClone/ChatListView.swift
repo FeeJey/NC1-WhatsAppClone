@@ -9,47 +9,88 @@ import SwiftUI
 
 struct ChatListView: View {
     
-    var viewModel = ListOfChats()
+    @State var viewModel = ListOfChats()
     @State var searcherbar: String = ""
+    @Environment(\.colorScheme) var colorscheme
+    
     
     var body: some View {
+        
+
         
         NavigationStack {
             ZStack (alignment: .leading){
                 
                 ScrollView {
-                    
-                    ForEach(viewModel.chats) { item in
-                        HStack {
-                            if item.imageName.isEmpty {
-                                Image(systemName: "person.2.circle.fill")
-                                    .resizable()
-                                    .frame(width: 60, height: 60)
-                                    .clipShape(Circle())
-                            } else {
-                                Image(item.imageName)
-                                    .resizable()
-                                    .frame(width: 60, height: 60)
-                                    .clipShape(Circle())
-                            }
+                    VStack{
+                        ForEach(searchResults) { item in
                             
-                            VStack {
-                                Text("\(item.name) \(item.surname)")
-                                    .fontWeight(.bold)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Text(item.lastAction)
-                                    .font(.subheadline)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            NavigationLink {
+                                ChatDetailView()
+                            } label: {
+                                HStack {
+                                    if item.imageName.isEmpty {
+                                        Image(systemName: "person.2.circle.fill")
+                                            .resizable()
+                                            .frame(width: 55, height: 55)
+                                            .clipShape(Circle())
+                                            .padding([.leading], 8)
+                                    } else {
+                                        Image(item.imageName)
+                                            .resizable()
+                                            .frame(width: 55, height: 55)
+                                            .clipShape(Circle())
+                                            .padding([.leading], 8)
+                                    }
+                                    
+                                    VStack {
+                                        Text("\(item.name) \(item.surname)")
+                                            .fontWeight(.bold)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                        Text(item.lastAction)
+                                            .font(.footnote)
+                                            .foregroundColor(.gray)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                    .multilineTextAlignment(.leading)
+                                    .padding([.top, .bottom], 8)
+                                    
+                                    Text(item.date)
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
                             }
-                            .multilineTextAlignment(.leading)
-                            Spacer()
-                            Text(item.date)
+                            .foregroundColor(colorscheme == .light ? .black : .white)
+                            .frame(maxHeight: 100)
+                            .padding([.trailing], 8)
+                            Divider()
+                                .padding([.leading], 70)
+                            
                         }
-                        .frame(maxHeight: 70)
-                        Divider()
+                        
+                        Spacer()
+                        
+                        Button(action:{}) {
+                            HStack{
+                                
+                                Image(systemName: "lock.fill")
+                                
+                                Spacer()
+                                    .frame(width: 3)
+                                
+                                Text("Your personal messages are")
+                                
+                                Spacer()
+                                    .frame(width: 3)
+                                
+                                Text("end-to-end encrypted")
+                                    .foregroundColor(.blue)
+                            }
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .padding()
+                        }
                     }
-                    .padding()
-                    
                 }
                 .navigationTitle("Chats")
                 .toolbar{
@@ -75,6 +116,14 @@ struct ChatListView: View {
             }
         }
     }
+    var searchResults: [Chat] {
+        if searcherbar.isEmpty {
+            return viewModel.chats
+        } else {
+            return viewModel.chats.filter { $0.name.lowercased().range(of:searcherbar.lowercased()) != nil || $0.surname.lowercased().range(of:searcherbar.lowercased()) != nil }
+        }
+    }
+
 }
 
 #Preview {
@@ -83,110 +132,116 @@ struct ChatListView: View {
 
 
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*NavigationView {
-            NavigationStack{
-                NavigationStack {
-                    List {
-                        ForEach(viewModel.chats) { chat in
-                            NavigationLink {
-                                ChatDetailView()
-                            }
-                        label: {
-                            HStack {
-                                Image(systemName: chat.imageName)
-                                    .imageScale(.large)
-                                
-                                Text(chat.name)
-                                    .font(.title)
-                                Text(chat.surname)
-                                    .font(.title)
-                                Text(chat.lastAction)
-                                    .font(.subheadline)
-                                
-                                Spacer()
-                                Text(chat.date)
-                            }
-                        }
-                            
-                        }
-                    }
-                }
-                .navigationTitle("Chats")
-                .toolbar {
-                    ToolbarItem (placement: .cancellationAction) {
-                        Button(action:{}) {
-                            Image(systemName: "ellipsis.circle")
-                        }
-                    }
-                    
-                    ToolbarItem (placement: .confirmationAction){
-                        Button(action:{}) {
-                            Image(systemName: "camera")
-                        }
-                    }
-                    
-                    ToolbarItem (placement: .destructiveAction){
-                        Button(action:{}) {
-                            Image(systemName: "plus.circle.fill")
-                        }
-                    }
-                    
-                }
-            }
-            
-            
-        }
-    }
-}
+
+/*.toolbar{
+ ToolbarItem(placement: .navigationBarTrailing) {
+ Button(action: {}) {
+ Image(systemName: "line.3.horizontal.decrease")
+ }
+ }
+ */
 
 
-#Preview {
-    ChatListView()*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*NavigationView {
+ NavigationStack{
+ NavigationStack {
+ List {
+ ForEach(viewModel.chats) { chat in
+ NavigationLink {
+ ChatDetailView()
+ }
+ label: {
+ HStack {
+ Image(systemName: chat.imageName)
+ .imageScale(.large)
+ 
+ Text(chat.name)
+ .font(.title)
+ Text(chat.surname)
+ .font(.title)
+ Text(chat.lastAction)
+ .font(.subheadline)
+ 
+ Spacer()
+ Text(chat.date)
+ }
+ }
+ 
+ }
+ }
+ }
+ .navigationTitle("Chats")
+ .toolbar {
+ ToolbarItem (placement: .cancellationAction) {
+ Button(action:{}) {
+ Image(systemName: "ellipsis.circle")
+ }
+ }
+ 
+ ToolbarItem (placement: .confirmationAction){
+ Button(action:{}) {
+ Image(systemName: "camera")
+ }
+ }
+ 
+ ToolbarItem (placement: .destructiveAction){
+ Button(action:{}) {
+ Image(systemName: "plus.circle.fill")
+ }
+ }
+ 
+ }
+ }
+ 
+ 
+ }
+ }
+ }
+ 
+ 
+ #Preview {
+ ChatListView()*/
 
 
 /*
-VStack {
-    HStack{
-        Button(action:{}) {
-            Image(systemName: "ellipsis.circle")
-        }
-        Spacer()
-        
-        Button(action:{}) {
-            Image(systemName: "camera")
-        }
-        
-        Button(action:{}) {
-            Image(systemName: "plus.square.dashed")
-        }
-    }
-    .padding()
-    
-    Text("Chats")
-        .font(.title)
-    
-    
-}
-*/
+ VStack {
+ HStack{
+ Button(action:{}) {
+ Image(systemName: "ellipsis.circle")
+ }
+ Spacer()
+ 
+ Button(action:{}) {
+ Image(systemName: "camera")
+ }
+ 
+ Button(action:{}) {
+ Image(systemName: "plus.square.dashed")
+ }
+ }
+ .padding()
+ 
+ Text("Chats")
+ .font(.title)
+ 
+ 
+ }
+ */
