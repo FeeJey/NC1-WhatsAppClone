@@ -18,6 +18,9 @@
 		42DAE1C32B061C9C00C9DDAD /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAE1C22B061C9C00C9DDAD /* Chats.swift */; };
 		42DAE1C62B063E2300C9DDAD /* LIstOfChats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAE1C52B063E2300C9DDAD /* LIstOfChats.swift */; };
 		42DAE1C82B075AF300C9DDAD /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAE1C72B075AF300C9DDAD /* ChatDetailView.swift */; };
+		42E619FC2B0D033C0082795A /* addView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E619FB2B0D033C0082795A /* addView.swift */; };
+		42E619FE2B0D45180082795A /* cameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E619FD2B0D45180082795A /* cameraView.swift */; };
+		42E61A002B0E1F500082795A /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E619FF2B0E1F500082795A /* Background.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		42DAE1C22B061C9C00C9DDAD /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
 		42DAE1C52B063E2300C9DDAD /* LIstOfChats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LIstOfChats.swift; sourceTree = "<group>"; };
 		42DAE1C72B075AF300C9DDAD /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
+		42E619FB2B0D033C0082795A /* addView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addView.swift; sourceTree = "<group>"; };
+		42E619FD2B0D45180082795A /* cameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraView.swift; sourceTree = "<group>"; };
+		42E619FF2B0E1F500082795A /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +105,10 @@
 			isa = PBXGroup;
 			children = (
 				4241A6282B04F8ED003CE337 /* ChatListView.swift */,
+				42E619FB2B0D033C0082795A /* addView.swift */,
+				42E619FD2B0D45180082795A /* cameraView.swift */,
 				42DAE1C72B075AF300C9DDAD /* ChatDetailView.swift */,
+				42E619FF2B0E1F500082795A /* Background.swift */,
 			);
 			name = ChatModel;
 			sourceTree = "<group>";
@@ -175,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42DAE1C62B063E2300C9DDAD /* LIstOfChats.swift in Sources */,
+				42E619FE2B0D45180082795A /* cameraView.swift in Sources */,
 				4241A6272B04F098003CE337 /* SettingsModelView.swift in Sources */,
 				4241A6252B04F06B003CE337 /* CommunitiesModelView.swift in Sources */,
 				42DAE1C82B075AF300C9DDAD /* ChatDetailView.swift in Sources */,
@@ -182,7 +192,9 @@
 				4241A6292B04F8ED003CE337 /* ChatListView.swift in Sources */,
 				4241A6092B03905D003CE337 /* WhatsAppCloneApp.swift in Sources */,
 				4241A6232B04F042003CE337 /* CallsModelView.swift in Sources */,
+				42E619FC2B0D033C0082795A /* addView.swift in Sources */,
 				4241A6212B04F01D003CE337 /* UpdatesModelView.swift in Sources */,
+				42E61A002B0E1F500082795A /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

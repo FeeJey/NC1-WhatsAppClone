@@ -13,10 +13,13 @@ struct ChatListView: View {
     @State var searcherbar: String = ""
     @Environment(\.colorScheme) var colorscheme
     
+    @State private var addViewIsPresented: Bool = false
+  //  @State private var if
+    
     
     var body: some View {
         
-
+        
         
         NavigationStack {
             ZStack (alignment: .leading){
@@ -47,6 +50,7 @@ struct ChatListView: View {
                                         Text("\(item.name) \(item.surname)")
                                             .fontWeight(.bold)
                                             .frame(maxWidth: .infinity, alignment: .leading)
+                                            //.foregroundColor(colorscheme == .light ? .black : .white)
                                         Text(item.lastAction)
                                             .font(.footnote)
                                             .foregroundColor(.gray)
@@ -91,9 +95,12 @@ struct ChatListView: View {
                             .padding()
                         }
                     }
+                    
                 }
                 .navigationTitle("Chats")
                 .toolbar{
+                    
+                    
                     ToolbarItem (placement: .cancellationAction) {
                         Button(action:{}) {
                             Image(systemName: "ellipsis.circle")
@@ -107,10 +114,13 @@ struct ChatListView: View {
                     }
                     
                     ToolbarItem (placement: .destructiveAction){
-                        Button(action:{}) {
-                            Image(systemName: "plus.circle.fill")
+                        Button("Add", systemImage: "plus.circle.fill") {
+                            addViewIsPresented.toggle()
                         }
                     }
+                }
+                .sheet(isPresented: $addViewIsPresented) {
+                    addView()
                 }
                 .searchable(text: $searcherbar, prompt: "Search")
             }
@@ -123,7 +133,7 @@ struct ChatListView: View {
             return viewModel.chats.filter { $0.name.lowercased().range(of:searcherbar.lowercased()) != nil || $0.surname.lowercased().range(of:searcherbar.lowercased()) != nil }
         }
     }
-
+    
 }
 
 #Preview {
