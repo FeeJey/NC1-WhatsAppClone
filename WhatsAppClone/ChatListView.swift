@@ -35,12 +35,14 @@ struct ChatListView: View {
                                     if item.imageName.isEmpty {
                                         Image(systemName: "person.2.circle.fill")
                                             .resizable()
+                                            .scaledToFill()
                                             .frame(width: 55, height: 55)
                                             .clipShape(Circle())
                                             .padding([.leading], 8)
                                     } else {
                                         Image(item.imageName)
                                             .resizable()
+                                            .scaledToFill()
                                             .frame(width: 55, height: 55)
                                             .clipShape(Circle())
                                             .padding([.leading], 8)
